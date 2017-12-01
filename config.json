@@ -1,0 +1,19 @@
+{
+   "host":"localhost",
+   "port":"3212",
+   "jwt_expiretime": "360000",
+   "channelName":"mychannel",
+   "CC_SRC_PATH":"../go",
+   "chaincodeName":"sofocap1",
+   "keyValueStore":"/tmp/fabric-client-kvs",
+   "eventWaitTime":"60000",
+   "blockAmount":10,
+   "currentPeer":"peer1",
+   "authorizationSecret":"thisismysecret",
+   "admins":[
+      {
+         "username":"admin",
+         "secret":"adminpw"
+      }
+   ]
+}

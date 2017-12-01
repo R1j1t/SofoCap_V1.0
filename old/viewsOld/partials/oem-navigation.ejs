@@ -1,0 +1,48 @@
+
+            <aside class="main-sidebar">
+                <!-- sidebar -->
+                <div class="sidebar">
+                   
+                   
+                    <!-- sidebar menu -->
+                    <ul class="sidebar-menu ucf-manu">
+                       <li <%if (state==1){%>class="treeview active"<%}%>>
+                            <a href="/oem">
+                                <i class="ti-home"></i> <span>Explorer</span>
+                            </a>
+                        </li>
+                        <li <%if (state==2||state==3){%>class="treeview active"<%}%>>
+                            <a href="javascript:void(0)">
+                            	<i class="ti-home" ></i> <span>Master Data Management</span>
+                            </a>
+							<ul class="dropdown">
+							<li><a href="/oem/ProductMaster">Product Master</a></li>
+							<li><a href="/oem/SkuMaster">Sku Master</a></li>
+							</ul>
+                        </li>
+                        
+                       
+                        <li <%if (state==4||state==5||state==6){%>class="treeview active"<%}%>>
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-bug" aria-hidden="true"></i><span>Asset Management</span>
+                            </a>
+							<ul class="dropdown">
+							<li ><a href="/oem/unitManagement">Unit/Batch Management</a></li>
+							<li ><a href="/oem/cartonManagement">Carton Management</a></li>
+							<li><a href="/oem/containerManagement">Container Management</a></li>
+                            <li><a href="/oem/claimOwnership">Claim Asset Ownership</a></li>
+							</ul>
+                        </li>
+                         <li  <%if (state==7){%>class="treeview active"<%}else{%>class="treeview"<%}%>>
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-bug" aria-hidden="true"></i><span>Analytics</span>
+                            </a>
+							<ul class="dropdown">
+							<li><a href="/oem/channelManagement">View Channels</a></li>
+							
+							</ul>
+                        </li>
+                        
+                    </ul>
+                </div> <!-- /.sidebar -->
+            </aside>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Bdtask - Bootstrap Admin Template Dashboard</title>
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="/assets/dist/img/ico/favicon.png" type="image/x-icon">
+        <link rel="apple-touch-icon" type="image/x-icon" href="/assets/dist/img/ico/apple-touch-icon-57-precomposed.png">
+        <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="/assets/dist/img/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="/assets/dist/img/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="/assets/dist/img/ico/apple-touch-icon-144-precomposed.png">
+
+        <!-- Start Global Mandatory Style
+        =====================================================================-->
+        <!-- jquery-ui css -->
+        <link href="/assets/plugins/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+        <!-- Bootstrap -->
+        <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <!-- Bootstrap rtl -->
+        <!--<link href="assets/bootstrap-rtl/bootstrap-rtl.min.css" rel="stylesheet" type="text/css"/>-->
+        <!-- Lobipanel css -->
+        <link href="/assets/plugins/lobipanel/lobipanel.min.css" rel="stylesheet" type="text/css"/>
+        <!-- Pace css -->
+        <link href="/assets/plugins/pace/flash.css" rel="stylesheet" type="text/css"/>
+        <!-- Font Awesome -->
+        <link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <!-- Pe-icon -->
+        <link href="/assets/pe-icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet" type="text/css"/>
+        <!-- Themify icons -->
+        <link href="/assets/themify-icons/themify-icons.css" rel="stylesheet" type="text/css"/>
+        <!-- End Global Mandatory Style
+        =====================================================================-->
+        <!-- Start Theme Layout Style
+        =====================================================================-->
+        <!-- Theme style -->
+        <link href="/assets/dist/css/styleBD.css" rel="stylesheet" type="text/css"/>
+        <!-- Theme style rtl -->
+        <!--<link href="/assets/dist/css/styleBD-rtl.css" rel="stylesheet" type="text/css"/>-->
+        <!-- End Theme Layout Style
+        =====================================================================-->
+        <style>
+            .canvasParent{
+                width: 130px !important;
+                margin: auto;
+            }
+            .canvasParent svg{ width: 100%;}
+        </style>
+    </head>
+    <body class="hold-transition sidebar-mini">
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            <header class="main-header"> 
+                <a href="#" class="logo"> <!-- Logo -->
+                    <span class="logo-mini">
+                        <!--<b>A</b>BD-->
+                        <img src="/assets/dist/img/mini-logo.png" alt="">
+                    </span>
+                    <span class="logo-lg">
+                        <!--<b>Admin</b>BD-->
+                        <img src="/assets/dist/img/logo.png" alt="">
+                    </span>
+                </a>
+                <!-- Header Navbar -->
+                <nav class="navbar navbar-static-top">
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"> <!-- Sidebar toggle button-->
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="pe-7s-keypad"></span>
+                    </a>
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown dropdown-user">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-user-circle-o v-middle" aria-hidden="true"></i>Profile</a>
+                                <ul class="dropdown-menu">
+                                   <!-- <li><a href="profile.html"><i class="pe-7s-users"></i> User Profile</a></li>
+                                    <li><a href="#"><i class="pe-7s-settings"></i> Settings</a></li>-->
+                                    <li><a href="/logout"><i class="pe-7s-key"></i> Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!-- =============================================== -->
+            <!-- Left side column. contains the sidebar -->
+            
+                <% include partials/oem-navigation %>
+            
+            
+            <!-- =============================================== -->
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Main content -->
+                <section class="content" style="margin-top:15px;">
+                    <div class="row">
+                         <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">View History</h4>
+      </div>
+      
+     <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-primary">View Sub Unit</button>
+      </div>-->
+    </div>
+  </div>
+</div>
+
+                        <!-- Textual inputs -->
+                        <div class="col-sm-12">
+                            <div class="panel panel-bd unit-maneg-page">
+                                <div class="panel-heading clearfix">
+                                   <div class="panel-title pull-left">
+                                        <h2>Unit Smartcode</h2>
+                                        
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="panel panel-bd unit-maneg-page">
+                                        <div class="row-sm-12">
+
+                                <table class="table table-bordered">
+                                    
+                                    <div class="panel panel-bd unit-maneg-page">
+                                        <div class="header-title">
+                                        <h3>Details-</h3>
+                                        </div>
+                                    </div>
+                                    
+                                    <tbody>
+                            
+                              <tr class="active">
+                                <td align="center"><b>Batch No.-</td>
+                                <td align="center"><%=BatchNo%></td>
+                              </tr>
+                              <tr class="active">
+                                <td align="center"><b>SKU Id-</td>
+                                <td align="center"><%=skuId%></td>
+                              </tr>
+                              <tr class="active">
+                                <td align="center"><b>Manufactured Date-</td>
+                                <td align="center"><%=ManufactureDate%></td>
+                              </tr>
+                              <tr class="active">
+                                <td align="center"><b>Expiry Date-</td>
+                                <td align="center"><%=ExpiryDate%></td>
+                              </tr>
+                              
+                             
+                             
+                                    </tbody>
+                                    
+
+                                </table>
+                                                    <input id="count" value="<%=keys.length%>" type="hidden"> </input>
+
+                                                    <% for (var i=0;i<keys.length;i++){%>
+                                                        <input id="field<%=i%>" value="<%=keys[i]%>" type="hidden" role="document"> </input>
+                                                    <%}%>
+                                                    <div id="print-content">
+                                                    <table class="table table-bordered">
+                                    
+                                                      <div class="panel panel-bd unit-maneg-page">
+                                                          <div class="header-title">
+                                                          <h3>Smartcodes-</h3>
+                                                          </div>
+                                                      </div>
+                                                      <thead>
+                            <tr>
+                              <th width="200" class="text-center">Smartcode Address</th>
+                              <th width="150" class="text-center">QR Code</th>
+                             
+                             
+                            </tr>
+                          </thead>
+                                                      <tbody>
+                                              
+                                                
+                                                  <% for (var i=0;i<keys.length;i++){%>
+                                                    <tr class="active">
+                                                  <td>
+                                                    <%=addresses[i]%>
+                                                  </td>
+                                                    
+                                                  <td>
+                                                        <div id="response<%=i%>">
+                                                            <canvas id="canvas"></canvas>
+                                                        </div>
+                                                        </td>
+                                                </tr>
+                                                        <%}%>
+                                                  
+                                                      </tbody>
+                                                      
+
+                                                  </table>
+                                                    
+                                                        
+                                                    </div>
+                                                    <input type="button" onclick="printDiv('print-content')" value="Print"/>
+                                                </div>    
+
+                                                        </div>
+                                                    </div>
+                                                    
+                                    </div>
+                                                    
+                                                    
+                                
+                                
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <!-- Checkboxes & Radios -->
+                </section> <!-- /.content -->
+            </div> <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div class="pull-right hidden-xs"> <b>Version</b> 1.0</div>
+                <strong>Copyright &copy; 2016-2017 <a href="#">bdtask</a>.</strong> All rights reserved. <i class="fa fa-heart color-green"></i>
+            </footer>
+        </div> <!-- ./wrapper -->
+        <!-- Start Core Plugins
+        =====================================================================-->
+        <!-- jQuery -->
+        <script src="/assets/plugins/jQuery/jquery-1.12.4.min.js" type="text/javascript"></script>
+        <!-- jquery-ui --> 
+        <script src="/assets/plugins/jquery-ui-1.12.1/jquery-ui.min.js" type="text/javascript"></script>
+        <!-- Bootstrap -->
+        <script src="/assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <!-- lobipanel -->
+        <script src="/assets/plugins/lobipanel/lobipanel.min.js" type="text/javascript"></script>
+        <!-- Pace js -->
+        <script src="/assets/plugins/pace/pace.min.js" type="text/javascript"></script>
+        <!-- SlimScroll -->
+        <script src="/assets/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <!-- FastClick -->
+        <script src="/assets/plugins/fastclick/fastclick.min.js" type="text/javascript"></script>
+        <!-- AdminBD frame -->
+        <script src="/assets/dist/js/frame.js" type="text/javascript"></script>
+        <!-- End Core Plugins
+        =====================================================================-->
+        <!-- Start Theme label Script
+        =====================================================================-->
+        <!-- Dashboard js -->
+        <script src="/assets/dist/js/dashboard.js" type="text/javascript"></script>
+        <!-- End Theme label Script
+        =====================================================================-->
+        
+        <script src="/bundle.js"></script>
+        <script>
+            $(function () {
+                $("#datepicker").datepicker({
+                    dateFormat: "dd-mm-yy"
+                });
+            });
+        </script>
+        <script type="text/javascript">
+
+        function printDiv(divName) {
+
+                var printContents = document.getElementById(divName).innerHTML;
+                w=window.open();
+                w.document.write(printContents);
+                w.print();
+                w.close();
+                }
+    </script>
+    </body>
+</html>

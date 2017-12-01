@@ -1,0 +1,154 @@
+.pace {
+    -webkit-pointer-events: none;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.pace-inactive {
+    display: none;
+}
+
+.pace .pace-progress {
+    background: #37a000;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    right: 100%;
+    width: 100%;
+    height: 2px;
+}
+
+.pace .pace-progress-inner {
+    display: block;
+    position: absolute;
+    right: 0px;
+    width: 100px;
+    height: 100%;
+    box-shadow: 0 0 10px #29d, 0 0 5px #37a000;
+    opacity: 1.0;
+    -webkit-transform: rotate(3deg) translate(0px, -4px);
+    -moz-transform: rotate(3deg) translate(0px, -4px);
+    -ms-transform: rotate(3deg) translate(0px, -4px);
+    -o-transform: rotate(3deg) translate(0px, -4px);
+    transform: rotate(3deg) translate(0px, -4px);
+}
+
+.pace .pace-activity {
+    display: block;
+    position: fixed;
+    z-index: 2000;
+    top: 20px;
+    left: 320px;
+    width: 20px;
+    height: 20px;
+    border: solid 2px transparent;
+    border-top-color: #37a000;
+    border-left-color: #37a000;
+    border-radius: 10px;
+    -webkit-animation: pace-spinner 400ms linear infinite;
+    -moz-animation: pace-spinner 400ms linear infinite;
+    -ms-animation: pace-spinner 400ms linear infinite;
+    -o-animation: pace-spinner 400ms linear infinite;
+    animation: pace-spinner 400ms linear infinite;
+}
+
+/*==========sign-up css============*/
+.sign-up-wrapper{
+	width: 600px;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    background: #fff;
+	}
+.sign-up-wrapper .form-control {
+    border-radius: 0;
+    box-shadow: none;
+    border: 1px solid #e4e5e7;
+    height: 40px;
+    background: transparent;
+}
+.sign-up-wrapper label{ color:#73777a;}
+.sign-up-wrapper > form > h4{
+	margin: 0;
+    padding: 12px;
+    background: #45c203;
+    color: #fff;
+    font-size: 25px;
+    text-align: center;
+    font-weight: 500;
+	margin-bottom:15px;
+	position:relative;
+	}
+.sign-up-wrapper > form > h4 >  span{
+	 position: absolute;
+    right: 10px;
+    top: 8px;
+	cursor:pointer;
+	}
+.sign-up-wrapper > form .form-group{ padding:0px 20px;}
+label{font-weight: 500;}
+.v-center{
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+.login-container{ width:470px; margin-top:0; margin-bottom:0;}
+
+table tr td .btn-success {
+    background-color: #37a000;
+    border-color: #318d01;
+    font-size: 12px;
+    padding: 2px 10px;
+}
+.upload-btn{
+	float: right;
+	position: relative;
+	width: 100px;
+	z-index: 999;
+	padding:0;
+	height: 38px;
+	cursor:pointer;
+	line-height: 34px;
+}
+.upload-btn > i{
+	position: absolute;
+	top: 6px;
+	font-size: 20px;
+	left: 46%;
+}
+.upload-btn input[type="file"]{ opacity:0;}
+
+
+.enginr-tabs{border-bottom: 1px solid #ddd !important;}
+.nav-tabs > li.active{top: 1px;}
+.nav-tabs > li.active a{    border-bottom: none !important;}
+.tab-bg{
+	border: 1px solid #ddd;
+padding: 10px;
+border-top: 0;
+background: #eee;
+margin-bottom: 15px;
+}
+
+@-webkit-keyframes pace-spinner {
+    0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-moz-keyframes pace-spinner {
+    0% { -moz-transform: rotate(0deg); transform: rotate(0deg); }
+    100% { -moz-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-o-keyframes pace-spinner {
+    0% { -o-transform: rotate(0deg); transform: rotate(0deg); }
+    100% { -o-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-ms-keyframes pace-spinner {
+    0% { -ms-transform: rotate(0deg); transform: rotate(0deg); }
+    100% { -ms-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@keyframes pace-spinner {
+    0% { transform: rotate(0deg); transform: rotate(0deg); }
+    100% { transform: rotate(360deg); transform: rotate(360deg); }
+}

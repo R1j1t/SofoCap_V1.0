@@ -1,0 +1,98 @@
+<% include ../partials/top %>
+
+<body>
+
+    <% include ../partials/header %>
+    
+ <div class="banner-area">
+ 	
+    <div class="container">
+   		<div class="row form-pannel">
+                        <!-- Form controls -->
+                        <div class="col-sm-12">
+                            <div class="panel panel-bd">
+                                <div class="panel-body">
+                                    <div class="col-md-12">
+                                        <fieldset>
+                                            <div style="font-size: 22px; text-align: center;">
+                                                Thanks for completing Supplier On Boarding process.
+                                                <p style="font-size: 16px;">
+                                                    Confirmation email will be sent to you after completing verification with in 2 working days.
+                                                </p>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+   </div>
+
+
+
+
+ </div>
+ 
+ <div class="where-are-you">
+ 	<div class="container">
+    	<div class="row">
+        	<div class="col-sm-4">
+            	<figure>
+                	<img src="images/localtion.png" alt="image" title="location"/>
+                    <figcaption>
+                    	<h3>Where Ever You Are</h3>
+                        <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-sm-4">
+            	<figure>
+                	<img src="images/thousend.png" alt="image" title="location"/>
+                    <figcaption>
+                    	<h3>Where Ever You Are</h3>
+                        <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-sm-4">
+            	<figure>
+                	<img src="images/lock.png" alt="image" title="location"/>
+                    <figcaption>
+                    	<h3>Where Ever You Are</h3>
+                        <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+ </div>
+ 
+
+
+    <% include ../partials/footer %>
+
+
+
+
+
+    <% include ../partials/bottom %>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#btnBAddMore").click(function() {
+                $("#tBank").append('<tr><td>Bank Statement</td><td>Pending</td><td style="text-align: center;"><a href="#"><i class="hvr-buzz-out fa fa-upload"></i></a><input type="file" name="BankStatement[]" id="txtPan"></td></tr>');
+            });
+
+
+            $("#btnPLAddMore").click(function() {
+                $("#tPL").append('<tr><td>PL Statement</td><td>Pending</td><td style="text-align: center;"><a href="#"><i class="hvr-buzz-out fa fa-upload"></i></a><input type="file" name="PL[]" id="txtPL"></td></tr>');
+            });
+        });
+    </script>
+
+
+
+
+</body>
+</html>

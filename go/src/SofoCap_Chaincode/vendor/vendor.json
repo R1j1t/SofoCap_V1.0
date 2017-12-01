@@ -1,0 +1,19 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "yqF125xVSkmfLpIVGrLlfE05IUk=",
+			"path": "github.com/golang/protobuf/proto",
+			"revision": "1643683e1b54a9e88ad26d98f81400c8c9d9f4f9",
+			"revisionTime": "2017-10-21T04:39:52Z"
+		},
+		{
+			"checksumSHA1": "TZYFb56xm5pvmVnqqUKF/eBAtr4=",
+			"path": "github.com/hyperledger/fabric/protos/msp",
+			"revision": "9f89f2ece9908b8395c81ca65a79646e7924e06f",
+			"revisionTime": "2017-11-07T02:24:06Z"
+		}
+	],
+	"rootPath": "SofoCap_Chaincode"
+}
