@@ -72,22 +72,22 @@ func (t *Supplychaincode) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
 	} else if function == "initSupplier" {
 		return t.InitSupplier(stub, args)
 	} else if function == "createPO" {
-		return t.CreatePO(stub, args)
+		return t.CreatePO(stub, args)  //done transaction
 	} else if function == "updatePOStatus" {
-		return t.UpdatePOStatus(stub, args)
+		return t.UpdatePOStatus(stub, args)//-=-done
 	} else if function == "generateInvoice" {
-		return t.GenerateInvoice(stub, args)
+		return t.GenerateInvoice(stub, args)//-=------done----
 	} else if function == "updateInvoiceStatus" {
-		return t.UpdateInvoiceStatus(stub, args)
+		return t.UpdateInvoiceStatus(stub, args)//-=-----sdone--------
 	} else if function == "initBank" {
 		return t.InitBank(stub, args)
 	} else if function == "disburseInvoice" { // for accepted offer disburtsement
-		return t.DisburseInvoice(stub, args)  /////////////////////////////////////////////////////
+		return t.DisburseInvoice(stub, args)  //-=----done---------
 	} else if function == "makeOffer" {
-		return t.MakeOffer(stub, args)               ///////////////////////////////////
+		return t.MakeOffer(stub, args)       //-=-------------
 	} else if function == "updateOfferStatus" { // supllier accepts or decline the offer accepting one rejects otheerrs automatuicaly
 		return t.UpdateOfferStatus(stub, args)
-	} else if function == "markRepayment" { // bank sets the payment done by buyer or supplier
+	} else if function == "markRepayment" { //-=-------------
 		return t.MarkRepayment(stub, args)
 	} else if function == "addBuyersToList" {
 		return t.AddBuyerToList(stub, args)
@@ -98,7 +98,7 @@ func (t *Supplychaincode) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
 	} else if function == "limitBuyer" {
 		return t.LimitBuyer(stub, args)
 	} else if function == "uploadApprovedInvoice" {
-		return t.UploadApprovedInvoice(stub, args)
+		return t.UploadApprovedInvoice(stub, args)//-=-------------
 	} else if function == "readAllSuppliers" {
 		return t.ReadAllSuppliers(stub, args)
 	} else if function == "read" {

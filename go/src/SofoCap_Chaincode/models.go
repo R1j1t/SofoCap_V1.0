@@ -20,6 +20,7 @@ type purchaseOrder struct {
 	SupplierName string    `json:"supplierName"`
 	BuyerName    string    `json:"buyerName"`
 	Status       string    `json:"status"`
+	TransactionHistory []transactions `json:"transactionHistory"`
 }
 
 type invoiceHash struct{
@@ -27,6 +28,14 @@ type invoiceHash struct{
 	SupplierId string `json:"supplierId"`
 	Hash string `json:"hash"`
 	
+}
+
+type transactions struct{
+	TxId string `json:"txId"`
+	Timestamp string `json:"timeStamp"`
+	Message string `json:"message"`
+	
+
 }
 
 type invoice struct {
@@ -44,6 +53,7 @@ type invoice struct {
 	SupplierName   string          `json:"supplierName"`
 	BuyerName      string          `json:"buyerName"`
 	Status         string          `json:"status"`
+	TransactionHistory []transactions `json:"transactionHistory"`
 }
 
 type buyer struct {
@@ -116,6 +126,7 @@ type disbursementInvoice struct {
 	BankName   		string `json:"bankName"`  
 	Date            string  `json:"date"`
 	Time            string  `json:"time"`
+	
 }
 
 type offer struct {

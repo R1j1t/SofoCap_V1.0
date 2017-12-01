@@ -4,7 +4,7 @@
    "jwt_expiretime": "360000",
    "channelName":"mychannel",
    "CC_SRC_PATH":"../go",
-   "chaincodeName":"sofocap1",
+   "chaincodeName":"sofocap5",
    "keyValueStore":"/tmp/fabric-client-kvs",
    "eventWaitTime":"60000",
    "blockAmount":10,

@@ -168,9 +168,20 @@ func (t *Supplychaincode) UpdatePOStatus (stub shim.ChaincodeStubInterface, args
 	if err != nil {
 		return shim.Error("chaincode:supplier:UpdatePOStatus::buyer unmshalling error")
 	}
+	
 	for i := range buyerAcc.PurchaseOrders {
 		if buyerAcc.PurchaseOrders[i].OrderId == POid {
 			buyerAcc.PurchaseOrders[i].Status = status
+			transaction:=transactions{}
+			transaction.TxId=stub.GetTxID()
+			if len(transaction.TxId)==0{
+				return shim.Error("chaincode: Buyer:: UpdatePOStatus::couldnt set the transaction Id ")
+			}
+			samay:=time.Now().Local()
+			transaction.Timestamp=samay.Format("02-01-2006")+"-"+samay.Format("3:04PM")
+			transaction.Message="Status updated to "+status;
+			buyerAcc.PurchaseOrders[i].TransactionHistory=append(buyerAcc.PurchaseOrders[i].TransactionHistory,transaction);
+		
 		}
 	}
 	buyerAsNewbytes, err := json.Marshal(buyerAcc)
@@ -282,7 +293,7 @@ InvoiceHash:=invoiceHash{};
 		}
 	}
 	//numOfProducts, _ := strconv.Atoi(args[2])
-	currentTime := time.Now().Local()
+	//currentTime := time.Now().Local()
 	if flag==1{
 	order=supplierAcc.PurchaseOrders[i];
 	} else{
@@ -349,13 +360,28 @@ InvoiceHash:=invoiceHash{};
 		return shim.Error("the total i.e. args[5] should be a number")
 	}
 	inv.Total =inv.Subtotal+ inv.Subtotal*inv.Taxes/100
+
+	currentT := time.Now().Local()
+
+	transaction:=transactions{}
+	transaction.TxId=stub.GetTxID()
+	if len(transaction.TxId)==0{
+		return shim.Error("chaincode: :Supplier:GenerateInvoice::couldnt set the transaction Id ")
+	}
+	samay := time.Now().Local()
+	transaction.Timestamp=samay.Format("02-01-2006")+"-"+samay.Format("3:04PM")
+	transaction.Message="Invoice Generated "+args[0];
+	order.TransactionHistory=append(order.TransactionHistory,transaction);
+	inv.TransactionHistory=order.TransactionHistory
 	  
+	
+
 	inv.PurchaseOrders = append(inv.PurchaseOrders, order)
 	inv.InvoiceId = invoiceId
 	inv.Status = "in process"
-	currentT := time.Now().Local()
+	
 	inv.Date = currentT.Format("02-01-2006")
-	inv.Time = currentTime.Format("3:04PM")
+	inv.Time = currentT.Format("3:04PM")
 	inv.Type = "indirect"
 	//i++
 	inv.Hash = args[6]
@@ -437,7 +463,7 @@ func (t *Supplychaincode) UploadApprovedInvoice(stub shim.ChaincodeStubInterface
 	order.Supplier = supplierId
 	order.TotalValue = POValue
 	order.Hash = args[11]
-
+	
 	inv := invoice{}
 	inv.InvoiceId = invoiceId
 	inv.PurchaseOrders = append(inv.PurchaseOrders, order)

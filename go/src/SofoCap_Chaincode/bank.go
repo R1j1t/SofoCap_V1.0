@@ -169,6 +169,19 @@ func (t *Supplychaincode) MakeOffer(stub shim.ChaincodeStubInterface, args []str
 			disInv.Time = currentTime.Format("3:04PM")
 			disInv.Days, _ = strconv.Atoi(days)
 			disInv.Details = invoices[i]
+
+			transaction:=transactions{}
+			transaction.TxId=stub.GetTxID()
+			if len(transaction.TxId)==0{
+				return shim.Error("chaincode::bank:MakeOffer::couldnt set the transaction Id ")
+			}
+			samay := time.Now().Local()
+			transaction.Timestamp=samay.Format("02-01-2006")+"-"+samay.Format("3:04PM")
+			transaction.Message="Offer made by "+bankAcc.BankName;
+			//order.TransactionHistory=append(order.TransactionHistory,transaction);
+			invoices[i].TransactionHistory=append(invoices[i].TransactionHistory,transaction)
+			//disInv.TransactionHistory=append(disInv.TransactionHistory,invoices[i].TransactionHistory)
+			disInv.Details = invoices[i]
 			disInv.BankName=bankAcc.BankName
 			disInv.DisRate, _ = strconv.ParseFloat(rate, 64)
 			disInv.InvoiceFunding = invoiceFunding
@@ -272,6 +285,23 @@ func (t *Supplychaincode) DisburseInvoice(stub shim.ChaincodeStubInterface, args
 				return shim.Success(nil)
 			}
 			invoices[i].Status = `disbursed`
+
+			transaction:=transactions{}
+			transaction.TxId=stub.GetTxID()
+			if len(transaction.TxId)==0{
+				return shim.Error("chaincode: :bank:DisburseInvoice::couldnt set the transaction Id ")
+			}
+			samay:=time.Now().Local()
+			transaction.Timestamp=samay.Format("02-01-2006")+"-"+samay.Format("3:04PM")
+			transaction.Message="Status updated to disbursed";
+			invoices[i].TransactionHistory=append(invoices[i].TransactionHistory,transaction);
+		
+
+
+
+
+
+
 			Dinv.Details = invoices[i]
 			Dinv.Bank = bankId
 			Dinv.Date = currentTime.Format("02-01-2006")
@@ -332,6 +362,15 @@ func (t *Supplychaincode) DisburseInvoice(stub shim.ChaincodeStubInterface, args
 	for i := range supplierAcc.Invoices {
 		if supplierAcc.Invoices[i].InvoiceId == invoiceId {
 			supplierAcc.Invoices[i].Status = `disbursed`
+			transaction:=transactions{}
+			transaction.TxId=stub.GetTxID()
+			if len(transaction.TxId)==0{
+				return shim.Error("chaincode: :bank:DisburseInvoice::couldnt set the transaction Id ")
+			}
+			samay:=time.Now().Local()
+			transaction.Timestamp=samay.Format("02-01-2006")+"-"+samay.Format("3:04PM")
+			transaction.Message="Status updated to disbursed";
+			supplierAcc.Invoices[i].TransactionHistory=append(supplierAcc.Invoices[i].TransactionHistory,transaction);
 		}
 	}
 	supplierAcc.DInvoices = append(supplierAcc.DInvoices, Dinv)
@@ -358,6 +397,16 @@ func (t *Supplychaincode) DisburseInvoice(stub shim.ChaincodeStubInterface, args
 		for i := range buyerAcc.Invoices {
 			if buyerAcc.Invoices[i].InvoiceId == invoiceId {
 				buyerAcc.Invoices[i].Status = `disbursed`
+				transaction:=transactions{}
+				transaction.TxId=stub.GetTxID()
+				if len(transaction.TxId)==0{
+					return shim.Error("chaincode: :bank:DisburseInvoice::couldnt set the transaction Id ")
+				}
+				samay:=time.Now().Local()
+				transaction.Timestamp=samay.Format("02-01-2006")+"-"+samay.Format("3:04PM")
+				transaction.Message="Status updated to disbursed";
+				buyerAcc.Invoices[i].TransactionHistory=append(buyerAcc.Invoices[i].TransactionHistory,transaction);
+
 			}
 		}
 		buyerAcc.DInvoices = append(buyerAcc.DInvoices, Dinv)
@@ -395,6 +444,18 @@ func (t *Supplychaincode) MarkRepayment(stub shim.ChaincodeStubInterface, args [
 	for i := range bankAcc.DInvoices {
 		if bankAcc.DInvoices[i].Details.InvoiceId == invId {
 			bankAcc.DInvoices[i].Details.Status = `repayed`
+			transaction:=transactions{}
+			transaction.TxId=stub.GetTxID()
+			if len(transaction.TxId)==0{
+				return shim.Error("chaincode: :bank:MarkRepayment::couldnt set the transaction Id ")
+			}
+			samay:=time.Now().Local()
+			transaction.Timestamp=samay.Format("02-01-2006")+"-"+samay.Format("3:04PM")
+			transaction.Message="Status updated to repayed";
+			bankAcc.DInvoices[i].Details.TransactionHistory=append(bankAcc.DInvoices[i].Details.TransactionHistory,transaction);
+
+			
+
 			buyerId = bankAcc.DInvoices[i].Details.Buyer
 			supplierId = bankAcc.DInvoices[i].Details.Supplier
 			Type = bankAcc.DInvoices[i].Details.Type
@@ -421,6 +482,19 @@ func (t *Supplychaincode) MarkRepayment(stub shim.ChaincodeStubInterface, args [
 		for j := range buyerAcc.DInvoices {
 			if buyerAcc.DInvoices[j].Details.InvoiceId == invId {
 				buyerAcc.DInvoices[j].Details.Status = `repayed`
+
+				transaction:=transactions{}
+				transaction.TxId=stub.GetTxID()
+				if len(transaction.TxId)==0{
+					return shim.Error("chaincode: :bank:MarkRepayment::couldnt set the transaction Id ")
+				}
+				samay:=time.Now().Local()
+				transaction.Timestamp=samay.Format("02-01-2006")+"-"+samay.Format("3:04PM")
+				transaction.Message="Status updated to repayed";
+				buyerAcc.DInvoices[j].Details.TransactionHistory=append(buyerAcc.DInvoices[j].Details.TransactionHistory,transaction);
+	
+				
+				
 			}
 		}
 		newBuyerAsbytes, err := json.Marshal(buyerAcc)
@@ -444,6 +518,17 @@ func (t *Supplychaincode) MarkRepayment(stub shim.ChaincodeStubInterface, args [
 	for k := range supplierAcc.DInvoices {
 		if supplierAcc.DInvoices[k].Details.InvoiceId == invId {
 			supplierAcc.DInvoices[k].Details.Status = `repayed`
+			transaction:=transactions{}
+			transaction.TxId=stub.GetTxID()
+			if len(transaction.TxId)==0{
+				return shim.Error("chaincode: :bank:MarkRepayment::couldnt set the transaction Id ")
+			}
+			samay:=time.Now().Local()
+			transaction.Timestamp=samay.Format("02-01-2006")+"-"+samay.Format("3:04PM")
+			transaction.Message="Status updated to repayed";
+			supplierAcc.DInvoices[k].Details.TransactionHistory=append( supplierAcc.DInvoices[k].Details.TransactionHistory,transaction);
+
+
 		}
 	}
 	newSupplierAsbytes, err := json.Marshal(supplierAcc)

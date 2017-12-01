@@ -223,6 +223,8 @@ func (t *Supplychaincode) CreatePO(stub shim.ChaincodeStubInterface, args []stri
 
 	order := purchaseOrder{}
 
+	
+
 	purchaseId := args[0]
 	//numOfProducts, _ := strconv.Atoi(args[1])
 	currentTime := time.Now().Local()
@@ -245,6 +247,17 @@ func (t *Supplychaincode) CreatePO(stub shim.ChaincodeStubInterface, args []stri
 	// order.SupplierName = args[5]
 	//i++
 	//order.BuyerName = args[6]
+
+	transaction:=transactions{}
+	transaction.TxId=stub.GetTxID()
+	if len(transaction.TxId)==0{
+		return shim.Error("chaincode: Buyer:: CreatePO::couldnt set the transaction Id ")
+	}
+	samay := time.Now().Local()
+	transaction.Timestamp=samay.Format("02-01-2006")+"-"+samay.Format("3:04PM")
+	transaction.Message="PO Generated"
+	order.TransactionHistory=append(order.TransactionHistory,transaction);
+
 	buyerAsbytes, _ := stub.GetState(order.Buyer)
 	supplierAsbytes, _ := stub.GetState(order.Supplier)
 	buyerAcc := buyer{}
@@ -362,6 +375,15 @@ func (t *Supplychaincode) UpdateInvoiceStatus(stub shim.ChaincodeStubInterface, 
 		if invoiceId == buyerAcc.Invoices[i].InvoiceId {
 			supplierId = buyerAcc.Invoices[i].Supplier
 			buyerAcc.Invoices[i].Status = status
+			transaction:=transactions{}
+			transaction.TxId=stub.GetTxID()
+			if len(transaction.TxId)==0{
+				return shim.Error("chaincode: Buyer:: UpdateInvoiceStatus::couldnt set the transaction Id ")
+			}
+			samay:=time.Now().Local();
+			transaction.Timestamp=samay.Format("02-01-2006")+"-"+samay.Format("3:04PM")
+			transaction.Message="Status updated to "+status;
+			buyerAcc.Invoices[i].TransactionHistory=append(buyerAcc.Invoices[i].TransactionHistory,transaction);
 			inv = buyerAcc.Invoices[i]
 		}
 	}
@@ -383,7 +405,17 @@ func (t *Supplychaincode) UpdateInvoiceStatus(stub shim.ChaincodeStubInterface, 
 		}
 	for i := range supplierAcc.Invoices {
 		if invoiceId == supplierAcc.Invoices[i].InvoiceId {
+			transaction:=transactions{}
+			transaction.TxId=stub.GetTxID()
+			if len(transaction.TxId)==0{
+				return shim.Error("chaincode: Buyer:: UpdateInvoiceStatus::couldnt set the transaction Id ")
+			}
+			samay:=time.Now().Local();
+			transaction.Timestamp=samay.Format("02-01-2006")+"-"+samay.Format("3:04PM")
+			transaction.Message="Status updated to "+status;
+			supplierAcc.Invoices[i].TransactionHistory=append(supplierAcc.Invoices[i].TransactionHistory,transaction);
 			supplierAcc.Invoices[i].Status = status
+
 		}
 	}
 	newSupplierAsbytes, err := json.Marshal(supplierAcc)
